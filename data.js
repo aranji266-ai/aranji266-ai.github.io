@@ -14,7 +14,8 @@ window.SEED={
     {id:"FILE_007",contributor:"Barbie",title:"DJ 小马宝莉paro",type:"DJ · 画",author:"淡巴孤",image:""},
     {id:"FILE_008",contributor:"耶",title:"猫的报恩",type:"DY · 文",author:"叶霜风",image:""},
     {id:"FILE_009",contributor:"鬼",title:"你又背着我在外面当狗",type:"DY · 画",author:"淡巴孤",image:""},
-    {id:"ARCHIVE_HIST_001",contributor:"鬼",title:"鬼市得子丸",type:"历史档案",format:"SCANNED_DOCUMENT",author:"鬼市得子丸在售",targets:["TARGET_01","TARGET_02"],status:"DECRYPTED",tags:["DY文","数据恢复"],image:"/assets/archive-hist-001-page-01.jpg",content:["/assets/archive-hist-001-page-01.jpg","/assets/archive-hist-001-page-02.jpg"],description:"历史遗留档案，已通过系统扫描并恢复。由于年代久远，以图像源文件形式封存。",upload_date:"2026-08-13"}
+    {id:"ARCHIVE_HIST_001",contributor:"鬼",title:"鬼市得子丸",type:"历史档案",archiveGroup:"historical",archiveMediaType:"scans",format:"SCANNED_DOCUMENT",author:"鬼市得子丸在售",targets:["TARGET_01","TARGET_02"],status:"DECRYPTED",tags:["DY文","数据恢复"],image:"/assets/archive-hist-001-page-01.jpg",content:["/assets/archive-hist-001-page-01.jpg","/assets/archive-hist-001-page-02.jpg"],description:"历史遗留档案，已通过系统扫描并恢复。由于年代久远，以图像源文件形式封存。",upload_date:"2026-08-13"},
+    {id:"ARCHIVE_HIST_002",contributor:"鬼",title:"怕鬼的人请举手",type:"历史档案",archiveGroup:"historical",archiveMediaType:"scans",format:"SCANNED_DOCUMENT",author:"",targets:["TARGET_01","TARGET_02"],status:"DECRYPTED",tags:["DJ文","数据恢复"],image:"/assets/archive-hist-002-page-01.jpg",content:["/assets/archive-hist-002-page-01.jpg","/assets/archive-hist-002-page-02.jpg"]}
   ],
   layout:{headline:"DAVIS\nPRIVATE NODE",intro:"Davis 私人节点已接入。\n权限、规则、身份，均可覆写。",worksMode:"rail",cardRatio:"portrait",accent:"blue",heroMode:"split",heroX:53,heroY:50,heroOverlay:0}
 };
