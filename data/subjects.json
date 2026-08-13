@@ -1,0 +1,5 @@
+[
+  {"id":"OPERATOR_00","name":"DAVIS","role":"HACKER / OPERATOR","status":"ONLINE","access":"ROOT ACCESS","image":"/assets/davis-hero.jpeg","profileImage":"/assets/davis-profile.jpeg","tags":["HACKER","OPERATOR","ARCHIVE OWNER","NO RULES"]},
+  {"id":"TARGET_01","name":"余家聪","role":"INVESTIGATION TARGET","status":"TRACKING ACTIVE","match":"98.4%","image":"/assets/target-01.jpeg","timeline":[{"date":"1987","event":"出生"},{"date":"1994.09","event":"小学"},{"date":"2000","event":"小学毕业"},{"date":"2005","event":"会考"},{"date":"2007","event":"高考"},{"date":"2010","event":"大学毕业 · 直博"},{"date":"2014","event":"博士毕业"},{"date":"2014—2017","event":"TBC / DATA GAP"}],"face":{"x":61,"y":38,"width":37}},
+  {"id":"TARGET_02","name":"李家源","role":"INVESTIGATION TARGET","status":"TRACE LIVE","match":"96.9%","image":"/assets/target-02.jpeg","timeline":[],"face":{"x":41,"y":19,"width":36}}
+]

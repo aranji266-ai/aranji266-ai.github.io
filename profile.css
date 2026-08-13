@@ -1,0 +1,22 @@
+.profile-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: #0b0d12;
+}
+.profile-photo {
+  aspect-ratio: 1;
+  background: #111522 center 24% / cover no-repeat;
+  display: flex;
+  align-items: end;
+  padding: .4rem;
+  font: 500 .48rem Consolas, monospace;
+  color: #b4bdd9;
+}
+.profile-card > div:last-child { display: flex; flex-direction: column; gap: .25rem; }
+.profile-card strong { font-size: 1.4rem; }
+.profile-card small { font: 500 .58rem Consolas, monospace; color: var(--muted); }
