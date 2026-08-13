@@ -1,5 +1,5 @@
 let data,key='';const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function apiUrl(path){if(!location.search.includes('eo_token='))return path;return `${path}${path.includes('?')?'&':'?'}${location.search.slice(1)}`}
+function apiUrl(path){if(!location.search.includes('eo_token='))return path;const url=new URL(path,location.origin);for(const[k,v]of new URLSearchParams(location.search))url.searchParams.set(k,v);return url.toString()}
 const clone=x=>JSON.parse(JSON.stringify(x));
 const history=w=>w.archiveGroup==='historical'||w.format==='SCANNED_DOCUMENT'||w.type==='历史档案';
 const historyKind=w=>w.archiveMediaType||(w.format==='SCANNED_DOCUMENT'?'scans':w.mediaType==='video'?'video':'image');

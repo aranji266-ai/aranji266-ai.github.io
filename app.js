@@ -3,7 +3,7 @@ const safe=(v='')=>String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':
 
 function assetUrl(path){
   if(!path||!location.search.includes('eo_token=')) return path;
-  return `${path}${path.includes('?')?'&':'?'}${location.search.slice(1)}`;
+  const url=new URL(path,location.origin);for(const [k,v] of new URLSearchParams(location.search))url.searchParams.set(k,v);return url.toString();
 }
 async function getJSON(path,fallback){try{const r=await fetch(assetUrl(path),{cache:'no-store'});return r.ok?await r.json():fallback}catch{return fallback}}
 const messageTime=value=>new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(value));
