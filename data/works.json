@@ -7,20 +7,23 @@
   {"id":"FILE_006","contributor":"耶","title":"春山外史","type":"DY · 视频","author":"叶霜风","image":"","mediaType":"video"},
   {"id":"FILE_007","contributor":"Barbie","title":"DJ 小马宝莉paro","type":"DJ · 画","author":"淡巴孤","image":""},
   {"id":"FILE_008","contributor":"耶","title":"猫的报恩","type":"DY · 文","author":"叶霜风","image":""},
-  {"id":"FILE_009","contributor":"鬼","title":"你又背着我在外面当狗","type":"DY · 画","author":"淡巴孤","image":""}
+  {"id":"FILE_009","contributor":"鬼","title":"你又背着我在外面当狗","type":"DY · 画","author":"淡巴孤","image":""},
+  {
+    "id":"ARCHIVE_HIST_001",
+    "contributor":"鬼",
+    "title":"鬼市得子丸",
+    "type":"历史档案",
+    "format":"SCANNED_DOCUMENT",
+    "author":"鬼市得子丸在售",
+    "targets":["TARGET_01","TARGET_02"],
+    "status":"DECRYPTED",
+    "tags":["DY文","数据恢复"],
+    "image":"/assets/archive-hist-001-page-01.jpg",
+    "content":[
+      "/assets/archive-hist-001-page-01.jpg",
+      "/assets/archive-hist-001-page-02.jpg"
+    ],
+    "description":"历史遗留档案，已通过系统扫描并恢复。由于年代久远，以图像源文件形式封存。",
+    "upload_date":"2026-08-13"
+  }
 ]
-{
-  "id": "ARCHIVE_HIST_001",
-  "title": "鬼市得子丸在售",
-  "type": "历史档案",
-  "format": "SCANNED_DOCUMENT",
-  "targets": ["TARGET_01", "TARGET_02"],
-  "status": "DECRYPTED",
-  "tags": ["DY·文", "数据恢复"],
-  "content": [
-    "c64d014255af1efbbed0b52da1a12899.jpg",
-    "e68a8d5af2e3120aba9c301bb6e8c489.jpg"
-  ],
-  "description": "历史遗留档案，已通过系统扫描并恢复。由于年代久远，以图像源文件形式封存。",
-  "upload_date": "2026-08-13"
-}
