@@ -10,6 +10,14 @@ const messageTime=value=>new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'
 const isHistory=w=>w.archiveGroup==='historical'||w.type==='历史档案';
 const archiveKind=w=>w.archiveMediaType||(w.mediaType==='video'?'video':(w.content||[]).length?'scans':'image');
 const videoUrl=w=>w.media||(w.mediaType==='video'?w.image:'');
+const defaultSections=[
+  {id:'current',title:'本次作品档案',eyebrow:'CURRENT CREATION FILES'},
+  {id:'historical',title:'历史档案',eyebrow:'RECOVERED LEGACY MATERIAL'},
+  {id:'images',title:'图片档案',eyebrow:'IMAGE ARCHIVE'},
+  {id:'photos',title:'照片档案',eyebrow:'PHOTO ARCHIVE'},
+  {id:'videos',title:'视频档案',eyebrow:'VIDEO ARCHIVE'},
+  {id:'art',title:'绘画档案',eyebrow:'ART ARCHIVE'}
+];
 
 async function loadMessages(){
   const list=$('#messageList');
@@ -33,12 +41,14 @@ function openViewer(w){
 }
 async function boot(){
   const [staticSubjects,staticWorks,staticLayout,cloud]=await Promise.all([getJSON('/data/subjects.json',[]),getJSON('/data/works.json',[]),getJSON('/data/layout.json',{}),getJSON('/api/content',null)]);
-  const subjects=cloud?.subjects||staticSubjects,layout=cloud?.layout||staticLayout;
+  const subjects=cloud?.subjects||staticSubjects,layout=cloud?.layout||staticLayout,sections=cloud?.sections?.length?cloud.sections:defaultSections;
   const works=cloud?.works?[...cloud.works]:[...staticWorks];for(const item of staticWorks.filter(isHistory)){if(!works.some(w=>w.id===item.id))works.push(item)}
   document.body.dataset.worksMode=layout.worksMode||'rail';document.body.dataset.cardRatio=layout.cardRatio||'portrait';document.body.dataset.accent=layout.accent||'violet';document.body.dataset.heroMode=layout.heroMode||'split';
   if(layout.intro)$('.lede').textContent=layout.intro;const headline=String(layout.headline||'DAVIS\nPRIVATE NODE').split('\n');$('#heroHeadline').innerHTML=`${safe(headline[0]||'DAVIS')}<br><i>${safe(headline.slice(1).join(' ')||'PRIVATE NODE')}</i>`;
   const davis=subjects.find(x=>x.id==='OPERATOR_00');if(davis){const hero=$('#heroImage');hero.style.setProperty('--hero-overlay',String((layout.heroOverlay??35)/100));setImage(hero,davis.image,{position:`${layout.heroX??50}% ${layout.heroY??50}%`,fit:layout.heroFit||'cover'});setImage($('#profileImage'),davis.profileImage)}
   $('#targetGrid').innerHTML=subjects.filter(x=>x.id.startsWith('TARGET_')).map(renderTarget).join('');document.querySelectorAll('.target-visual[data-image]').forEach(el=>setImage(el,el.dataset.image));
-  const current=works.filter(w=>!isHistory(w)),historical=works.filter(isHistory);$('#workTrack').innerHTML=current.map(renderWork).join('');$('#historyTrack').innerHTML=historical.map(renderWork).join('');document.querySelectorAll('#workTrack .work-card').forEach(c=>{const open=()=>openViewer(current[+c.dataset.index]);c.onclick=open;c.onkeydown=e=>{if(e.key==='Enter')open()}});document.querySelectorAll('#historyTrack .work-card').forEach(c=>{const open=()=>openViewer(historical[+c.dataset.index]);c.onclick=open;c.onkeydown=e=>{if(e.key==='Enter')open()}});
+  const sectionWorks=sections.map(s=>({section:s,items:works.filter(w=>(w.sectionId||(isHistory(w)?'historical':'current'))===s.id)}));
+  $('#works').innerHTML=sectionWorks.map(({section,items},si)=>`<section class="works archive-section${section.id==='historical'?' history-section':''}" id="archive-${safe(section.id)}"><div class="section-head"><div><p class="eyebrow">${safe(section.eyebrow||'CLASSIFIED ARCHIVE')}</p><h2>${safe(section.title)}</h2></div><span>${items.length} FILES / SWIPE →</span></div><div class="work-track">${items.length?items.map(renderWork).join(''):'<p class="empty-archive">NO FILES ARCHIVED</p>'}</div></section>`).join('');
+  document.querySelectorAll('.archive-section').forEach((lane,si)=>lane.querySelectorAll('.work-card').forEach(c=>{const open=()=>openViewer(sectionWorks[si].items[+c.dataset.index]);c.onclick=open;c.onkeydown=e=>{if(e.key==='Enter')open()}}));
 }
 $('.close').onclick=()=>$('#viewer').close();boot();initMessages();
